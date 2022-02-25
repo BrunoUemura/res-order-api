@@ -4,7 +4,17 @@
   "description": "Restaurant Order API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "lint": "eslint .",
+    "prettier-format": "prettier --config .prettierrc 'src/**/**/*.ts' --write",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "postinstall": "prisma generate",
+    "migrate": "prisma migrate deploy",
+    "seed": "ts-node prisma/seed.ts",
+    "docker": "sh ./scripts/build.sh",
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
+    "start": "node dist/src/server.js"
   },
   "repository": {
     "type": "git",
